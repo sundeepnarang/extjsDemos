@@ -2,28 +2,37 @@
  * Created by Sundeep on 4/11/2015.
  */
 
-Ext.define('MyApp.MyPanel', {
-    extend      : 'Ext.Panel',
-    width       : 200,
-    height      : 150,
-    bodyPadding : 5
-});
-
 Ext.application({
     name   : 'MyApp',
 
     launch : function() {
 
-        Ext.create('MyApp.MyPanel', {
-            renderTo :Ext.getBody(),
-            title    : 'My First Panel',
-            html     : 'My First Panel'
-        });
-
-        Ext.create('MyApp.MyPanel', {
+        Ext.widget({
             renderTo : Ext.getBody(),
-            title    : 'My Second Panel',
-            html     : 'My Second Panel'
-        });
+            xtype    : 'grid',
+            title    : 'Grid',
+            width    : 650,
+            height   : 300,
+            plugins  : 'rowediting',
+            store    : {
+                fields : [ 'name', 'age', 'votes', 'credits' ],
+                data   : [
+                    [ 'Bill', 35, 10, 427 ],
+                    [ 'Fred', 22, 4, 42 ]
+                ]
+            },
+            columns: {
+                defaults: {
+                    editor : 'numberfield',
+                    width  : 120
+                },
+                items: [
+                    { text: 'Name', dataIndex: 'name', flex: 1, editor: 'textfield' },
+                    { text: 'Age', dataIndex: 'age' },
+                    { text: 'Votes', dataIndex: 'votes' },
+                    { text: 'Credits', dataIndex: 'credits' }
+                ]
+            }
+        })
     }
 });
