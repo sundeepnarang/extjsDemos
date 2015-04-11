@@ -1,0 +1,20 @@
+/**
+ * Created by Sundeep on 4/11/2015.
+ */
+
+Ext.application({
+    name   : 'MyApp',
+
+    launch : function() {
+
+        Ext.create('Ext.Panel', {
+            renderTo     : Ext.getBody(),
+            width        : 200,
+            height       : 150,
+            bodyPadding  : 5,
+            title        : 'Hello World',
+            html         : 'Hello <b>World</b>...'
+        });
+
+    }
+});
